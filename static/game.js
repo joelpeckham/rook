@@ -33,3 +33,6 @@ for (let testPlayerHead of testPlayerHeads){
     document.getElementById("playerListContainer").appendChild(testPlayerHead.render());
 }
 
+let tm = new ToastManager(document.getElementById("toastManagerContainer"))
+
+

@@ -136,3 +136,41 @@ class PlayerHead {
     return template.content;
   }
 }
+
+class Toast{
+  constructor(text, duration = 3){
+    this.text = text;
+    this.duration = duration;
+    this.ID = uuidv4();
+  }
+  render(){
+    let html =
+    `<div class = "toast" id="${this.ID}">
+      <p class = "toastText">${this.text}</p>
+    </div>`;
+    var template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content;
+  }
+}
+
+class ToastManager{
+  constructor(containerElement){
+    this.toasts = [];
+    this.container = containerElement;
+  }
+  addToast(toast){
+    this.toasts.push(toast);
+    let toastElem = toast.render();
+    this.container.appendChild(toastElem);
+    console.log(this.container.lastChild);
+    this.container.lastChild.style.animation = `fadeOut 1s ease ${toast.duration-1.5}s 1`;
+    
+    setTimeout(() => {
+      for (let c of this.container.children) {
+        if (c.id == toast.ID) c.remove(); 
+        break;
+      }
+    }, 1000*toast.duration);
+  }
+}

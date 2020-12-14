@@ -48,11 +48,6 @@
             height:100px;
             margin:20px;
         }
-        /* .playerIconSvg.selected{
-            border: solid 3px var(--selected_color);
-            border-radius: 100px;
-            background-color: var(--selected_color);
-        } */
         .iconContainer{
             display:flex;
             align-items: center;
@@ -94,33 +89,28 @@
         <div id = "ui">
             <div id = iconPicker>
                 <div id = "iconPickerGrid">
-                    <div class = "iconContainer" onclick = "selectPlayer(0)"><img class="playerIconSvg" src="playerIcons/playerIcon_0.svg" alt="Avatar 0"></div>
-                    <div class=iconContainer onclick = "selectPlayer(1)"><img class="playerIconSvg" src="playerIcons/playerIcon_1.svg" alt="Avatar 1"></div>
-                    <div class=iconContainer onclick = "selectPlayer(2)"><img class="playerIconSvg" src="playerIcons/playerIcon_2.svg" alt="Avatar 2"></div>
-                    <div class=iconContainer onclick = "selectPlayer(3)"><img class="playerIconSvg" src="playerIcons/playerIcon_3.svg" alt="Avatar 3"></div>
-                    <div class="iconContainer selected" onclick = "selectPlayer(4)"><img class="playerIconSvg" src="playerIcons/playerIcon_4.svg" alt="Avatar 4"></div>
-                    <div class=iconContainer onclick = "selectPlayer(5)"><img class="playerIconSvg" src="playerIcons/playerIcon_5.svg" alt="Avatar 5"></div>
+
                 </div>
             </div>
             <div id = "textInputContainer">
-                <input type="text" class="formInput" id="name" placeholder="Name" required />
-                <button>Join Lobby</button>
+                <button>Ready</button>
+                <p>The game will start when all players are ready. </br>Last player ready is dealer.</p>
             </div>
         </div>
     </div>
 </body>
 
 <script>
-    let selectedPlayer = 4;
-    function selectPlayer(num) {
-        count = 0;
-        for (c of document.getElementById("iconPickerGrid").children) {
-            c.className = "iconContainer";
-            if (count == num) c.className = "iconContainer selected";
-            count++;
-        }
-        selectedPlayer = num;
-    }
+    var socket = io();
+    let id = sessionStorage.getItem('sessionId');
+    socket.emit('start-session', { sessionId: id });
+    socket.on("set-session-acknowledgement", function (data) {
+        sessionStorage.setItem('sessionId', data.sessionId);
+    })
+
+    socket.on("hello", function (data) {
+        console.log("Hello", data[0],data[1]);
+    })
 </script>
 
 </html>

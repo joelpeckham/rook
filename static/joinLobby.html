@@ -1,0 +1,150 @@
+<html>
+
+<head>
+    <title>Rook Online</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        :root{
+            --selected_color:rgb(0, 0, 0);
+        }
+        body,html{
+            margin:0;
+            font-family: sans-serif;
+            height: 100%;
+            width: 100%;
+        }
+        #uiContainer{
+            height: 100%;
+            min-height: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            background:#302f2d;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #iconPickerGrid{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px 10px;
+            grid-template-areas:
+                ". . ."
+                ". . .";
+            width:400px;
+        }
+
+        #ui{
+            display:grid;
+            grid-template-rows: 1fr 1fr;
+            height:400px;
+        }
+        .playerIconSvg{
+            position:relative;
+            top:0;
+            left:0;
+            width:100px;
+            height:100px;
+            margin:20px;
+        }
+        /* .playerIconSvg.selected{
+            border: solid 3px var(--selected_color);
+            border-radius: 100px;
+            background-color: var(--selected_color);
+        } */
+        .iconContainer{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height:120px;
+        }
+        .iconContainer:before{
+            content:'';
+            position: absolute;
+            width:10px;
+            height:10px;
+            transition: all 0.1s;
+        }
+        .iconContainer.selected:before{
+            content:'';
+            position: absolute;
+            width:10px;
+            height:10px;
+            box-shadow: 0px 0px 40px 30px rgba(255,246,220,1);
+        }
+        .iconContainer:hover:before{
+            content:'';
+            position: absolute;
+            width:10px;
+            height:10px;
+            box-shadow: 0px 0px 40px 30px rgba(255,246,220,1);
+        }
+        #textInputContainer{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id = "uiContainer">
+        <div id = "ui">
+            <div id = iconPicker>
+                <div id = "iconPickerGrid">
+                    <div class = "iconContainer" onclick = "selectPlayer(0)"><img class="playerIconSvg" src="playerIcons/playerIcon_0.svg" alt="Avatar 0"></div>
+                    <div class=iconContainer onclick = "selectPlayer(1)"><img class="playerIconSvg" src="playerIcons/playerIcon_1.svg" alt="Avatar 1"></div>
+                    <div class=iconContainer onclick = "selectPlayer(2)"><img class="playerIconSvg" src="playerIcons/playerIcon_2.svg" alt="Avatar 2"></div>
+                    <div class=iconContainer onclick = "selectPlayer(3)"><img class="playerIconSvg" src="playerIcons/playerIcon_3.svg" alt="Avatar 3"></div>
+                    <div class="iconContainer selected" onclick = "selectPlayer(4)"><img class="playerIconSvg" src="playerIcons/playerIcon_4.svg" alt="Avatar 4"></div>
+                    <div class=iconContainer onclick = "selectPlayer(5)"><img class="playerIconSvg" src="playerIcons/playerIcon_5.svg" alt="Avatar 5"></div>
+                </div>
+            </div>
+            <div id = "textInputContainer">
+                <input type="text" class="formInput" id="name" placeholder="Name" required />
+                <button onclick = "joinLobby()">Join Lobby</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var socket = io();
+    let id = sessionStorage.getItem('sessionId');
+    socket.emit('start-session', { sessionId: id });
+    socket.on("set-session-acknowledgement", function (data) {
+        sessionStorage.setItem('sessionId', data.sessionId);
+    })
+
+    let selectedPlayer = 4;
+    function selectPlayer(num) {
+        count = 0;
+        for (c of document.getElementById("iconPickerGrid").children) {
+            c.className = "iconContainer";
+            if (count == num) c.className = "iconContainer selected";
+            count++;
+        }
+        selectedPlayer = num;
+    }
+
+
+    function joinLobby(){
+        playerName = document.getElementById("name").value;
+        socket.emit('attemptPlayerJoinLobby', {playerName:playerName,playerImageNumber:selectedPlayer});
+    }
+
+    socket.on('lobbyJoinedSuccess', function (data) {
+        console.log("joining");
+        socket.disconnect();
+        window.location.replace("/lobby.html");
+    });
+
+    socket.on("hello", function (data) {
+            console.log("Hello", data[0], data[1]);
+        })
+
+</script>
+
+</html>

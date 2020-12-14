@@ -3,7 +3,10 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var socketIO = require('socket.io');
+const gs = require('./gameState');
+const { v4: uuidv4 } = require('uuid');
 
+let setup = new gs.setupState();
 
 var app = express();
 var server = http.Server(app);
@@ -15,7 +18,7 @@ app.use(express.static(__dirname + '/static'));
 
 // Routing
 app.get('/', function (request, response) {
-    response.sendFile(path.join(__dirname, '/static/index.html'));
+    response.sendFile(path.join(__dirname, '/static/joinLobby.html'));
 });
 app.get('/favicon.ico', function (request, response) {
     response.sendFile(path.join(__dirname, '/favicon.ico'));
@@ -28,15 +31,35 @@ server.listen(5000, function () {
 });
 
 // Add the WebSocket handlers
-io.on('connection', function (socket) {});
+let sessions = {};
 
-var players = {};
 io.on('connection', function (socket) {
-    socket.on('new player', function () {
-        players[socket.id] = {
-            x: 300,
-            y: 300
-        };
+    socket.on('disconnect', () => {
+        console.log("disconnect");
+        delete sessions[socket.id];
+    });
+    socket.on('start-session', function (data) {
+        console.log("============start-session event================")
+        if (data.sessionId == null) {
+            var sessionId = uuidv4(); //generating the sessions_id and then binding that socket to that sessions 
+            console.log("Server null: ",sessionId);
+            socket.join(sessionId); sessions[socket.id] = sessionId;
+                socket.emit("set-session-acknowledgement", { sessionId: sessionId });
+        }
+        else {
+            console.log("Server not null: ", data.sessionId);
+            socket.join(data.sessionId); sessions[socket.id] = data.sessionId;
+        }
+    });
+    setInterval(function () {
+        io.to(sessions[socket.id]).emit("hello", [socket.id, sessions[socket.id]]);
+    }, 1000);
+    socket.on('attemptPlayerJoinLobby', function (data) {
+        // console.log(socket.id,data.playerName,data.playerImageNumber);
+        io.to(socket.id).emit("lobbyJoinedSuccess");
+    });
+    socket.on('hello', function (data) {
+        // console.log(socket.id);
     });
     socket.on('movement', function (data) {
         var player = players[socket.id] || {};
@@ -54,7 +77,3 @@ io.on('connection', function (socket) {
         }
     });
 });
-
-setInterval(function () {
-    io.sockets.emit('state', players);
-}, 1000 / 60);

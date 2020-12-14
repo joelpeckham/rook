@@ -186,3 +186,33 @@ body,html{
     transform: translateY(0);
   }
 }
+
+#toastManagerContainer{
+    position: absolute;
+    bottom:10;
+    left: 10;
+}
+
+.toast{
+    background-color: #fff;
+    box-shadow: 1px 1px 3px 2px rgba(36, 11, 11, 0.2);
+    border-radius: 10px;
+    min-height:50px;
+    transition: all 0.5s;
+    display:flex;
+    align-items: center;
+    min-width: 200px;
+    margin:20px;
+}
+.toastText{
+    margin: 20px;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity:0%;
+  }
+}
