@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 309" width="300" height="309">
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="M-806 -119L394 -119L394 781L-806 781Z" />
+		</clipPath>
+		<linearGradient id="grd1" gradientUnits="userSpaceOnUse"  x1="150" y1="1" x2="150" y2="301">
+			<stop offset="0" stop-color="#806a6a"  />
+			<stop offset="1" stop-color="#665654"  />
+		</linearGradient>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="M150 301C232.84 301 300 233.84 300 151C300 68.16 232.84 1 150 1C67.16 1 0 68.16 0 151C0 233.84 67.16 301 150 301Z" />
+		</clipPath>
+		<linearGradient id="grd2" gradientUnits="userSpaceOnUse"  x1="160.799" y1="76" x2="160.799" y2="205">
+			<stop offset="0" stop-color="#f7b186"  />
+			<stop offset="1" stop-color="#ffc299"  />
+		</linearGradient>
+		<linearGradient id="grd3" gradientUnits="userSpaceOnUse"  x1="150" y1="308.308" x2="150" y2="192.548">
+			<stop offset="0" stop-color="#ffc9b3"  />
+			<stop offset="1" stop-color="#ffd2c2"  />
+		</linearGradient>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp3">
+			<path d="M255 244.31C261.35 257.21 266.35 278.55 270 308.31L30 308.31C33.65 278.54 38.65 257.21 45 244.31C51.32 231.45 110 206.7 110 206.7C110 206.7 111.17 195.39 114 193.76C116.83 192.14 182.63 192.14 186 193.76C189.37 195.38 190 206.69 190 206.69C190 206.69 248.69 231.47 255 244.31Z" />
+		</clipPath>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: url(#grd1) } 
+		.shp1 { fill: url(#grd2) } 
+		.shp2 { fill: #f08956 } 
+		.shp3 { fill: #ffffff } 
+		.shp4 { fill: url(#grd3) } 
+		.shp5 { fill: #ffa789 } 
+	</style>
+	<g id="Dribbble preview" clip-path="url(#cp1)">
+		<g id="User 02b">
+			<path id="Mask" class="shp0" d="M150 301C232.84 301 300 233.84 300 151C300 68.16 232.84 1 150 1C67.16 1 0 68.16 0 151C0 233.84 67.16 301 150 301Z" />
+			<g id="Mask by Mask" clip-path="url(#cp2)">
+				<path id="Mask" class="shp1" d="M182 177L182 205L118 205C118 205 118.12 163.6 118 136.19C103.67 117.61 103.67 106 115 94C126.33 82 207 76 207 76C207 76 213.05 134.21 214 150C214.38 156.35 218.5 177 202.5 177C193.5 177 182 177 182 177Z" />
+				<path id="Path 48" class="shp2" d="M182 175C160 172.5 145 163 145 163C145 163 152 182 182 188L182 175Z" />
+				<path id="Combined Shape" class="shp3" d="M131.02 106.21C127.84 103.47 123.98 101.64 118.51 104.47C105.56 111.2 114.16 137.13 128.65 136.63C133.65 136.45 131.36 146.42 118 153C118 142.5 102 116.5 100.6 92.83C84.5 86.83 88.5 62.85 99.56 62.85C97.79 40.85 133 29.5 146.63 42.12C160.5 25.5 195.5 34 197.61 48.41C221.68 35.57 237.5 72.5 214.96 86.83C205.69 92.73 184 94.98 152.69 94.98C137.66 94.98 146.3 130.15 151 141.5C157 156 190.5 158 201 156.5C209.2 155.33 213.5 152 214 150C221.5 170 212 182 197 182C171.5 182 146 174.5 142 156C138.82 141.28 138.99 117.52 131.02 106.21Z" />
+				<g id="Group 2">
+					<path id="Combined Shape" class="shp4" d="M255 244.31C261.35 257.21 266.35 278.55 270 308.31L30 308.31C33.65 278.54 38.65 257.21 45 244.31C51.32 231.45 110 206.7 110 206.7C110 206.7 111.17 195.39 114 193.76C116.83 192.14 182.63 192.14 186 193.76C189.37 195.38 190 206.69 190 206.69C190 206.69 248.69 231.47 255 244.31Z" />
+					<g id="Mask by Combined Shape" clip-path="url(#cp3)">
+						<path id="Combined Shape" class="shp5" d="M14 227L283 227L283 235L14 235L14 227ZM14 247L283 247L283 255L14 255L14 247ZM14 267L283 267L283 275L14 275L14 267ZM14 287L283 287L283 295L14 295L14 287Z" />
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

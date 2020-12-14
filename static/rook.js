@@ -19,15 +19,19 @@ let testHand = new Hand([
     new Card("blue",null,true)
 ]);
 
-let testPile = new Pile([
+let testPile = new Pile(document.getElementById("pileContainer"),[
     new Card("red", 3),
-    new Card("green", 5),
-    new Card("black", 5),
-    new Card("red", 1),
-    new Card("yellow", 10),
-    new Card("green", 5),
-    new Card("black", 5),
-    new Card("yellow", 2)
+    new Card("red", 5)
 ]);
+
+let testPlayerHeads = [
+    new PlayerHead("Karen", 0),
+    new PlayerHead("Mike", 1)
+];
+
 document.getElementById("gameFooter").appendChild(testHand.render());
-document.getElementById("pileContainer").appendChild(testPile.render());
+
+for (let testPlayerHead of testPlayerHeads){
+    document.getElementById("playerListContainer").appendChild(testPlayerHead.render());
+}
+

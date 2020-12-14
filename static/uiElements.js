@@ -65,17 +65,28 @@ class Hand {
 }
 
 class Pile {
-  constructor(cards = []) {
+  constructor(containerElement, cards = []) {
+    this.home = containerElement;
     this.cards = cards;
+    this.htmlSubContainer;
     this.htmlID = uuidv4();
+    this.renderList();
   }
-  removeCard(card) {
-    const index = array.indexOf(card);
-    if (index > -1) {
-      this.cards.splice(index, 1);
-    }
+  delete(){
+    this.home.innerHTML = "";
   }
-  render() {
+  add(card){
+    this.cards.push(card);
+    card = card.render();
+    card.firstElementChild.classList.add("inPile")
+    var cardContainer = document.createElement('div');
+    cardContainer.classList = ["cardContainer"];
+    let spread = 15;
+    cardContainer.style.transform = `rotate(${Math.random() * (spread * 2) - spread}deg)`;
+    cardContainer.appendChild(card)
+    this.htmlSubContainer.appendChild(cardContainer);
+  }
+  renderList() {
     var container = document.createElement('div');
     container.classList = ["pile"];
     for (var card of this.cards) {
@@ -86,8 +97,28 @@ class Pile {
       let spread = 15;
       cardContainer.style.transform = `rotate(${Math.random() * (spread*2) - spread  }deg)`;
       cardContainer.appendChild(card)
+      this.htmlSubContainer = container;
       container.appendChild(cardContainer);
+      this.home.appendChild(container);
     }
-    return container;
+  }
+}
+
+class PlayerHead {
+  constructor(name, imageNumber) {
+    this.name = name;
+    this.imageURL = `playerIcons/playerIcon_${imageNumber}.svg`;
+  }
+  render() {
+    let html =
+    `
+    <div class = "playerTag">
+      <img class="playerIconSvg" src="${this.imageURL}" alt="${this.name}">
+      <p class = "playerIconName">${this.name}</p>
+    </div>
+    `;
+    var template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content;
   }
 }

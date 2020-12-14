@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 305" width="300" height="305">
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="M-94 -119L1106 -119L1106 781L-94 781Z" />
+		</clipPath>
+		<linearGradient id="grd1" gradientUnits="userSpaceOnUse"  x1="150" y1="301" x2="150" y2="1">
+			<stop offset="0" stop-color="#ffc9b3"  />
+			<stop offset="1" stop-color="#ffd2c2"  />
+		</linearGradient>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="M150 301C67.16 301 0 233.84 0 151C0 68.16 67.16 1 150 1C232.84 1 300 68.16 300 151C300 233.84 232.84 301 150 301Z" />
+		</clipPath>
+		<linearGradient id="grd2" gradientUnits="userSpaceOnUse"  x1="154.23" y1="73.36" x2="154.23" y2="230">
+			<stop offset="0" stop-color="#e6864e"  />
+			<stop offset="1" stop-color="#eb965e"  />
+		</linearGradient>
+		<linearGradient id="grd3" gradientUnits="userSpaceOnUse"  x1="172.762" y1="166.742" x2="163.855" y2="189.912">
+			<stop offset="0" stop-color="#e07a3f"  />
+			<stop offset="1" stop-color="#eb9154"  />
+		</linearGradient>
+		<linearGradient id="grd4" gradientUnits="userSpaceOnUse"  x1="150" y1="203" x2="150" y2="304.308">
+			<stop offset="0" stop-color="#1d0024"  />
+			<stop offset="1" stop-color="#100014"  />
+		</linearGradient>
+		<linearGradient id="grd5" gradientUnits="userSpaceOnUse"  x1="157.985" y1="31.001" x2="157.985" y2="151.003">
+			<stop offset="0" stop-color="#1d0024"  />
+			<stop offset="1" stop-color="#100014"  />
+		</linearGradient>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: url(#grd1) } 
+		.shp1 { fill: url(#grd2) } 
+		.shp2 { opacity: 0.6;mix-blend-mode: multiply;fill: url(#grd3) } 
+		.shp3 { fill: url(#grd4) } 
+		.shp4 { fill: #ffffff } 
+		.shp5 { fill: url(#grd5) } 
+	</style>
+	<g id="Dribbble preview" clip-path="url(#cp1)">
+		<g id="User 05c">
+			<path id="Mask" class="shp0" d="M150 301C67.16 301 0 233.84 0 151C0 68.16 67.16 1 150 1C232.84 1 300 68.16 300 151C300 233.84 232.84 301 150 301Z" />
+			<g id="Mask by Mask" clip-path="url(#cp2)">
+				<path id="face" class="shp1" d="M181 175C181 175 181 175 181 187C181 203 204 210 204 210C204 210 177.5 230 150 230C122.5 230 96 210 96 210C96 210 119.18 203 119 187C118.82 171 118.94 161.6 118.82 134.19C104.49 115.61 105.41 103.14 113.24 94.38C139.5 65 211 75 211 75C211 75 217.67 146.99 202.5 168C196 177 181 175 181 175Z" />
+				<path id="shade" class="shp2" d="M181 175C159 172.5 146 163 146 163C146 163 157 181.5 181 187L181 175Z" />
+				<path id="body" class="shp3" d="M255 240.31C264.52 259.66 270 304.31 270 304.31L30 304.31C30 304.31 35.48 259.66 45 240.31C54.52 220.96 110.1 203.01 110.1 203.01C120.81 225 179.61 225 189.87 203C189.87 203 245.48 220.95 255 240.31Z" />
+				<path id="buttons" class="shp4" d="M150 243C152.21 243 154 241.21 154 239C154 236.79 152.21 235 150 235C147.79 235 146 236.79 146 239C146 241.21 147.79 243 150 243ZM150 263C152.21 263 154 261.21 154 259C154 256.79 152.21 255 150 255C147.79 255 146 256.79 146 259C146 261.21 147.79 263 150 263ZM150 283C152.21 283 154 281.21 154 279C154 276.79 152.21 275 150 275C147.79 275 146 276.79 146 279C146 281.21 147.79 283 150 283Z" />
+				<path id="hair" class="shp5" d="M131.15 104.21C127.97 101.48 124.11 99.64 118.65 102.48C105.7 109.2 115.5 135 127 135C130 135 131.49 144.42 118.13 151C118.13 140.5 102.13 114.5 100.74 90.83C84.63 84.84 88.63 60.85 99.69 60.85C97.92 38.86 133.13 27.5 146.77 40.12C160.63 23.5 195.63 32 197.75 46.42C221.81 33.57 237.63 70.5 215.1 84.84C205.83 90.73 184.13 92.98 152.82 92.98C148.1 92.98 145.45 94.15 146.77 100C149.33 111.33 143.39 118.46 131.15 104.21Z" />
+			</g>
+		</g>
+	</g>
+</svg>
