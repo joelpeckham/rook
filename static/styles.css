@@ -1,0 +1,100 @@
+:root {
+  --card_red: red;
+  --card_yellow: gold;
+  --card_green: green;
+  --card_black: black;
+  --card_blue: blue;
+  --card_width: 150px;
+  --card_height: calc(var(--card_width) * 1.4);
+}
+
+.hasColor_red{
+    color:var(--card_red);
+}
+.hasColor_yellow{
+    color:var(--card_yellow);
+}
+.hasColor_green{
+    color:var(--card_green);
+}
+.hasColor_black{
+    color:var(--card_black);
+}
+.hasColor_blue{
+    color:var(--card_blue);
+}
+
+body{
+    font-family: sans-serif;
+}
+
+.cardFront {
+    display:grid;
+    grid-template-rows: 50px 1fr;
+    background-color:#f8f8f8; 
+    width: var(--card_width); height: var(--card_height); 
+    border-radius:10px; 
+    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.1);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
+.cardFront .header{
+    margin-left:15px;
+    margin-top:10px;
+}
+.cardFront .header .smallNumber{
+    display:inline-block;
+    vertical-align: top;
+    margin:0px;
+    margin-right:3px;
+    font-size:2rem;
+}
+.cardFront .header .spelledNumber{
+    display:inline-block;
+    margin:0px;
+    font-size: 0.8rem;
+    vertical-align: top;
+    margin-top:.3rem;
+}
+
+.cardFront .body{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:60px;
+    font-weight:900;
+    margin-bottom:20px;
+}
+.cardFront .body .largeNumber{
+    margin:0;
+}
+
+.playerHand{
+    position: relative;
+    top:50px;
+}
+
+.playerHand .cardContainer{
+    position:relative;
+    float:left;
+    margin-left:calc(var(--card_width)*-0.65);
+    transition: transform 0.15s;
+    width:var(--card_width);
+    padding-bottom:40px;
+}
+.playerHand .cardContainer:hover{
+    transform:translate(0px,-40px);
+}
+.playerHand .cardContainer:first-child{
+    margin-left:inherit;
+
+}
+
+#gameFooter{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:90vh;
+}
