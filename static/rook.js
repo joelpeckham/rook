@@ -11,7 +11,7 @@ var socket = io();
 //     socket.emit('movement', movement);
 // }, 1000 / 60);
 
-let testHand = new Hand([
+let testHand = new Hand(document.getElementById("gameFooter"),[
     new Card("yellow", 3),
     new Card("green", 5),
     new Card("black", 5),
@@ -28,8 +28,6 @@ let testPlayerHeads = [
     new PlayerHead("Karen", 0),
     new PlayerHead("Mike", 1)
 ];
-
-document.getElementById("gameFooter").appendChild(testHand.render());
 
 for (let testPlayerHead of testPlayerHeads){
     document.getElementById("playerListContainer").appendChild(testPlayerHead.render());

@@ -39,28 +39,42 @@ class Card{
 }
 
 class Hand {
-  constructor(cards = []) {
+  constructor(containerElement, cards = []) {
+    this.home = containerElement;
     this.cards = cards;
+    this.htmlSubContainer;
     this.htmlID = uuidv4();
+    this.render();
+    
   }
   removeCard(card){
-    const index = array.indexOf(card);
-    if (index > -1) {
-      this.cards.splice(index, 1);
+    for (let div of this.htmlSubContainer.children){
+      if (div.className == `cardContainer ${card.color}_${card.number}_${card.isRook}`){
+        div.remove(); 
+      }
     }
+  }
+  addCard(card){
+    var cardContainer = document.createElement('div');
+    cardContainer.classList = [`cardContainer ${card.color}_${card.number}_${card.isRook}`];
+    card = card.render();
+    card.firstElementChild.classList.add("inPlayerHand");
+    cardContainer.appendChild(card)
+    this.htmlSubContainer.appendChild(cardContainer);
   }
   render() {
     var container = document.createElement('div');
     container.classList = ["playerHand"];
     for (var card of this.cards) {
-      card = card.render();
-      card.firstElementChild.classList.add("inPlayerHand")
       var cardContainer = document.createElement('div');
-      cardContainer.classList = ["cardContainer"];
+      cardContainer.classList = [`cardContainer ${card.color}_${card.number}_${card.isRook}`];
+      card = card.render();
+      card.firstElementChild.classList.add("inPlayerHand");
       cardContainer.appendChild(card)
       container.appendChild(cardContainer);
     }
-    return container;
+    this.htmlSubContainer = container;
+    this.home.appendChild(container);
   }
 }
 
@@ -97,10 +111,10 @@ class Pile {
       let spread = 15;
       cardContainer.style.transform = `rotate(${Math.random() * (spread*2) - spread  }deg)`;
       cardContainer.appendChild(card)
-      this.htmlSubContainer = container;
       container.appendChild(cardContainer);
-      this.home.appendChild(container);
     }
+    this.htmlSubContainer = container;
+    this.home.appendChild(container);
   }
 }
 
