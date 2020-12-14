@@ -1,40 +1,49 @@
 :root {
-  --card_red: red;
-  --card_yellow: gold;
-  --card_green: green;
-  --card_black: black;
-  --card_blue: blue;
+  --card_red: #F3525C;
+  --card_yellow: #FCCE44;
+  --card_green: #95B23A;
+  --card_black: rgb(80, 80, 80);
+  --card_blue: #4A6D8C;
   --card_width: 150px;
   --card_height: calc(var(--card_width) * 1.4);
 }
 
 .hasColor_red{
     color:var(--card_red);
+    border-color:var(--card_red);
 }
 .hasColor_yellow{
     color:var(--card_yellow);
+    border-color:var(--card_yellow);
 }
 .hasColor_green{
     color:var(--card_green);
+    border-color:var(--card_green);
 }
 .hasColor_black{
     color:var(--card_black);
+    border-color:var(--card_black);
 }
 .hasColor_blue{
     color:var(--card_blue);
+    border-color:var(--card_blue);
 }
 
-body{
+body,html{
+    margin:0;
     font-family: sans-serif;
+    height: 100%;
+    width: 100%;
 }
 
 .cardFront {
     display:grid;
     grid-template-rows: 50px 1fr;
-    background-color:#f8f8f8; 
+    background-color:rgb(255, 255, 255); 
     width: var(--card_width); height: var(--card_height); 
     border-radius:10px; 
-    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.1);
+    border:solid 3px;
+    box-shadow: 1px 1px 10px 2px rgba(0,0,0,0.1);
     text-transform: uppercase;
     font-weight: 600;
 }
@@ -43,6 +52,11 @@ body{
 .cardFront .header{
     margin-left:15px;
     margin-top:10px;
+}
+.cardFront  .cardPoints{
+    color:var(--card_black);
+    font-size:0.6rem;
+    text-transform: lowercase;
 }
 .cardFront .header .smallNumber{
     display:inline-block;
@@ -73,28 +87,54 @@ body{
 
 .playerHand{
     position: relative;
-    top:50px;
 }
 
 .playerHand .cardContainer{
     position:relative;
     float:left;
     margin-left:calc(var(--card_width)*-0.65);
-    transition: transform 0.15s;
+    transition: all 0.15s;
     width:var(--card_width);
     padding-bottom:40px;
+    
 }
 .playerHand .cardContainer:hover{
-    transform:translate(0px,-40px);
+    transform:translate(0px,-45px) rotate(5deg);
 }
 .playerHand .cardContainer:first-child{
     margin-left:inherit;
-
 }
 
 #gameFooter{
     display:flex;
     justify-content: center;
+    align-items: flex-end;
+}
+#gameBody{
+    display:flex;
+    justify-content: center;
     align-items: center;
-    height:90vh;
+}
+.pile {
+    position:relative;
+}
+.pile .cardContainer{
+    position: absolute;
+    top:calc(var(--card_height)/-2);
+    left:calc(var(--card_width)/-2);
+}
+
+.pile .cardContainer:first-child{
+    left:-120;
+}
+#gameBoard{
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    background:#f3efe9;
+
 }

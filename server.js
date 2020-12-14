@@ -16,6 +16,10 @@ app.use('/static', express.static(__dirname + '/static'));
 app.get('/', function (request, response) {
     response.sendFile(path.join(__dirname, '/static/index.html'));
 });
+app.get('/favicon.ico', function (request, response) {
+    response.sendFile(path.join(__dirname, '/favicon.ico'));
+});
+
 
 // Starts the server.
 server.listen(5000, function () {

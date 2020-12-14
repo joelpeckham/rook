@@ -13,7 +13,7 @@ class Card{
     this.points = {1:15,2:0,3:0,4:0,5:5,6:0,7:0,8:0,9:0,10:10,11:0,12:0,13:0,14:0}[number];
     if (isRook){
       this.color = "blue";
-      this.number = 15;
+      this.number = "R";
       this.points = 20;
     }
     this.htmlID = uuidv4();
@@ -21,13 +21,14 @@ class Card{
   render(){
     let html = 
     `
-    <div class = "cardFront" id="${this.htmlID}">
+    <div class = "cardFront hasColor_${this.color}"" id="${this.htmlID}">
       <div class = "header">
-        <p class = "smallNumber hasColor_${this.color}"> ${this.number} </p>
-        <p class = "hasColor_${this.color} spelledNumber"> ${this.color} </p>
+        <p class = "smallNumber"> ${this.number} </p>
+        <p class = "spelledNumber"> ${(!this.isRook) ? this.color : "rook"} 
+        </br> <span class = "cardPoints">${this.points} points</span> </p>
       </div>
       <div class = "body">
-      <p class = "largeNumber hasColor_${this.color}"> ${this.number} </p>
+      <p class = "largeNumber"> ${this.number} </p>
       </div>
     </div>
     `;
@@ -82,6 +83,8 @@ class Pile {
       card.firstElementChild.classList.add("inPile")
       var cardContainer = document.createElement('div');
       cardContainer.classList = ["cardContainer"];
+      let spread = 15;
+      cardContainer.style.transform = `rotate(${Math.random() * (spread*2) - spread  }deg)`;
       cardContainer.appendChild(card)
       container.appendChild(cardContainer);
     }
