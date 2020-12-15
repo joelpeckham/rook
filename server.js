@@ -32,6 +32,7 @@ server.listen(5000, function () {
 
 // Add the WebSocket handlers
 let sessions = {};
+let players = [];
 
 io.on('connection', function (socket) {
     socket.on('disconnect', () => {
@@ -51,29 +52,9 @@ io.on('connection', function (socket) {
             socket.join(data.sessionId); sessions[socket.id] = data.sessionId;
         }
     });
-    setInterval(function () {
-        io.to(sessions[socket.id]).emit("hello", [socket.id, sessions[socket.id]]);
-    }, 1000);
     socket.on('attemptPlayerJoinLobby', function (data) {
-        // console.log(socket.id,data.playerName,data.playerImageNumber);
-        io.to(socket.id).emit("lobbyJoinedSuccess");
-    });
-    socket.on('hello', function (data) {
-        // console.log(socket.id);
-    });
-    socket.on('movement', function (data) {
-        var player = players[socket.id] || {};
-        if (data.left) {
-            player.x -= 5;
-        }
-        if (data.up) {
-            player.y -= 5;
-        }
-        if (data.right) {
-            player.x += 5;
-        }
-        if (data.down) {
-            player.y += 5;
-        }
+        players.push
+        console.log(socket.id,data.playerName,data.playerImageNumber);
+        io.to(sessions[socket.id]).emit("lobbyJoinedSuccess");
     });
 });
