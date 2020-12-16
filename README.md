@@ -9,4 +9,4 @@ npm install
 npm start
 ````
 
-Navitage to localhost:5000 in a browser.
+Navigate to localhost:5000 in a browser.
